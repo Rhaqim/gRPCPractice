@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "grpclearning/checksum";
+
+service Checksum {
+    rpc ComputeChecksum(ComputeChecksumRequest) returns (ComputeChecksumResponse) {}
+    rpc ComputeAddition(readRequest) returns (readResponse) {}
+}
+
+message ComputeChecksumRequest {
+    string data = 1;
+}
+
+message ComputeChecksumResponse {
+    string checksum = 1;
+}
+
+message readRequest {
+    float first = 1;
+    float second = 2;
+}
+
+message readResponse {
+    float result = 1;
+}
