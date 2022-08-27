@@ -6,7 +6,7 @@ import (
 	"log"
 	"net"
 
-	pb "grpclearning/routeguide"
+	pb "grpclearning/checks"
 
 	"google.golang.org/grpc"
 )

@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/local"
 
-	pb "grpclearning/routeguide"
+	pb "grpclearning/checks"
 )
 
 var (

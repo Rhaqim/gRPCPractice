@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.6.1
-// source: routeguide/cehcking_stuff.proto
+// source: checks/checks.proto
 
 package checksum
 
@@ -137,5 +137,5 @@ var Checksum_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "routeguide/cehcking_stuff.proto",
+	Metadata: "checks/checks.proto",
 }
