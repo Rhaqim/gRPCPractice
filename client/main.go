@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/local"
+	"google.golang.org/grpc/credentials/alts"
 
 	pb "grpclearning/checks"
 )
@@ -23,7 +23,10 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	flag.Parse()
-	conn, err := grpc.Dial(*addr, grpc.WithTransportCredentials(local.NewCredentials()))
+	clientOpts := alts.DefaultClientOptions()
+	clientOpts.TargetServiceAccounts = []string{"default"}
+	altsTC := alts.NewClientCreds(clientOpts)
+	conn, err := grpc.Dial(*addr, grpc.WithTransportCredentials(altsTC))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
