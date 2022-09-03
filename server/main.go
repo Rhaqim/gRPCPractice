@@ -9,6 +9,7 @@ import (
 	pb "grpclearning/checks"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/alts"
 )
 
 var (
@@ -26,7 +27,8 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	log.Printf("Listening on %s", *addr)
-	s := grpc.NewServer()
+	altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
+	s := grpc.NewServer(grpc.Creds(altsTC))
 	pb.RegisterChecksumServer(s, &server{})
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
